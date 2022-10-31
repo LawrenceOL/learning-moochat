@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const clickHandler = () => {
@@ -7,12 +8,14 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Mooooo!</Text>
-      <StatusBar style="auto" />
+    <SafeAreaProvider style={styles.container}>
+      <SafeAreaView>
+        <Text style={styles.label}>Mooooo!</Text>
+        <StatusBar style="auto" />
 
-      <Button title="First Button" onPress={clickHandler} />
-    </View>
+        <Button title="First Button" onPress={clickHandler} />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -20,8 +23,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "teal",
-    alignItems: "center",
-    justifyContent: "center",
   },
   label: {
     color: "white",
