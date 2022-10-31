@@ -1,22 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const [newCount, setNewCount] = useState(0);
+
+  // useEffect with dependency array
+  useEffect(() => {
+    console.log("I'm Rendering");
+  }, [count, newCount]);
 
   const add = () => {
-    setCount((previousValue) => {
-      return previousValue + 1;
-    });
-
-    //simplified one line version
     setCount((previousValue) => previousValue + 1);
   };
 
   const subtract = () => {
-    setCount(count - 1);
+    setNewCount(newCount - 1);
   };
 
   return (
