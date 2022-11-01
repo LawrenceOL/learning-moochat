@@ -1,19 +1,17 @@
 import React from "react";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
-const SignUpForm = (props) => {
+const SignInForm = () => {
   return (
     <>
-      <Input label="First name" icon="user-o" iconPack={FontAwesome} />
-      <Input label="Last name" icon="user-o" iconPack={FontAwesome} />
       <Input label="Email" icon="mail" iconPack={Feather} />
       <Input label="Password" icon="lock" iconPack={Feather} />
 
       <SubmitButton
-        title="Sign up"
+        title="Sign in"
         onPress={() => console.log("Sign up button pressed")}
         style={{ marginTop: 20 }}
       />
@@ -21,4 +19,4 @@ const SignUpForm = (props) => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
