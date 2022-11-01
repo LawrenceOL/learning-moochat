@@ -16,7 +16,11 @@ const AuthScreen = (props) => {
         <Input label="Email" icon="mail" iconPack={Feather} />
         <Input label="Password" icon="lock" iconPack={Feather} />
 
-        <SubmitButton />
+        <SubmitButton
+          title="Sign up"
+          onPress={() => console.log("Sign up button pressed")}
+          style={{ marginTop: 20 }}
+        />
       </PageContainer>
     </SafeAreaView>
   );
