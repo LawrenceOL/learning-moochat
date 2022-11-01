@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,6 +14,8 @@ import { Feather } from "@expo/vector-icons";
 import colors from "../constants/colors";
 
 const ChatScreen = (props) => {
+  const [messageText, setMessageText] = useState();
+
   return (
     <SafeAreaView edges={["right", "left", "bottom"]} style={styles.container}>
       <ImageBackground
@@ -27,7 +29,14 @@ const ChatScreen = (props) => {
         >
           <Feather name="plus" size={24} color={colors.blue} />
         </TouchableOpacity>
-        <TextInput style={styles.textBox} />
+        <TextInput
+          style={styles.textBox}
+          value={messageText}
+          onChangeText={(text) => {
+            setMessageText(text);
+          }}
+        />
+
         <TouchableOpacity
           style={styles.mediaButton}
           onPress={() => console.log("Pressed")}
