@@ -41,6 +41,7 @@ const ChatScreen = (props) => {
           onChangeText={(text) => {
             setMessageText(text);
           }}
+          onSubmitEditing={sendMessage}
         />
 
         {messageText === "" && (
