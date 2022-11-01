@@ -5,6 +5,7 @@ import { Feather, FontAwesome } from "@expo/vector-icons";
 
 import Input from "../components/Input";
 import PageContainer from "../components/PageContainer";
+import SubmitButton from "../components/SubmitButton";
 
 const AuthScreen = (props) => {
   return (
@@ -14,6 +15,8 @@ const AuthScreen = (props) => {
         <Input label="Last name" icon="user-o" iconPack={FontAwesome} />
         <Input label="Email" icon="mail" iconPack={Feather} />
         <Input label="Password" icon="lock" iconPack={Feather} />
+
+        <SubmitButton />
       </PageContainer>
     </SafeAreaView>
   );
