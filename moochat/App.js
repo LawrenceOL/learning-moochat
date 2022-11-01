@@ -7,6 +7,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
 //imports from my own files
 import ChatListScreen from "./Screens/ChatListScreen.js";
@@ -29,6 +30,11 @@ const TabNavigator = () => {
         component={ChatListScreen}
         options={{
           tabBarLabel: "Chats",
+          tabBarIcon: () => {
+            return (
+              <Ionicons name="chatbubble-outline" size={24} color="black" />
+            );
+          },
         }}
       />
       <Tab.Screen
@@ -36,6 +42,9 @@ const TabNavigator = () => {
         component={SettingsScreen}
         options={{
           tabBarLabel: "Settings",
+          tabBarIcon: () => {
+            return <Ionicons name="settings-outline" size={24} color="black" />;
+          },
         }}
       />
     </Tab.Navigator>
