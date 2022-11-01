@@ -1,57 +1,12 @@
+import "react-native-gesture-handler";
 import { StyleSheet, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
 import * as Font from "expo-font";
-import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-
-//imports from my own files
-import ChatListScreen from "./Screens/ChatListScreen.js";
-import ChatSettingsScreen from "./Screens/ChatSettingsScreen.js";
-import SettingsScreen from "./Screens/SettingsScreen.js";
+import AppNavigator from "./navigation/AppNavigator";
 
 SplashScreen.preventAutoHideAsync();
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-
-const TabNavigator = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerTitle: "",
-      }}
-    >
-      <Tab.Screen
-        name="ChatList"
-        component={ChatListScreen}
-        options={{
-          tabBarLabel: "Chats",
-          tabBarIcon: ({ color, size }) => {
-            return (
-              <Ionicons name="chatbubble-outline" size={size} color={color} />
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarLabel: "Settings",
-          tabBarIcon: ({ color, size }) => {
-            return (
-              <Ionicons name="settings-outline" size={size} color={color} />
-            );
-          },
-        }}
-      />
-    </Tab.Navigator>
-  );
-};
 
 export default function App() {
   const [appIsLoaded, setAppIsLoaded] = useState(false);
@@ -74,11 +29,12 @@ export default function App() {
           thinItalic: require("./assets/fonts/Roboto-ThinItalic.ttf"),
         });
       } catch (error) {
-        console.log(error);
+        console.log.error();
       } finally {
         setAppIsLoaded(true);
       }
     };
+
     prepare();
   }, []);
 
@@ -94,25 +50,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider style={styles.container} onLayout={onLayout}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={TabNavigator}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="ChatSettings"
-            component={ChatSettingsScreen}
-            options={{
-              headerTitle: "Chat Settings",
-              headerBackTitle: "Back",
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <AppNavigator />
     </SafeAreaProvider>
   );
 }
@@ -120,7 +58,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
   },
   label: {
     color: "black",
