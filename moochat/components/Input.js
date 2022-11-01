@@ -4,7 +4,7 @@ import colors from "../constants/colors";
 const Input = (props) => {
   return (
     <View>
-      <Text>{props.label}</Text>
+      <Text style={styles.label}>{props.label}</Text>
 
       <View style={styles.inputContainer}>
         {props.icon && (
@@ -23,6 +23,12 @@ const Input = (props) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+  },
+  label: {
+    marginVertical: 8,
+    fontFamily: "bold",
+    letterSpacing: 0.3,
+    color: colors.textColor,
   },
   inputContainer: {
     width: "100%",
