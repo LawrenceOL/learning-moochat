@@ -1,20 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const AuthScreen = (props) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <Text>Auth Screen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+const styles = StyleSheet.create({});
 
 export default AuthScreen;
