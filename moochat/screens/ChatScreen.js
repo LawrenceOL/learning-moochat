@@ -50,10 +50,10 @@ const ChatScreen = (props) => {
 
         {messageText !== "" && (
           <TouchableOpacity
-            style={styles.mediaButton}
+            style={{ ...styles.mediaButton, ...styles.sendButton }}
             onPress={() => console.log("Pressed")}
           >
-            <Feather name="send" size={24} color={colors.blue} />
+            <Feather name="send" size={20} color="white" />
           </TouchableOpacity>
         )}
       </View>
@@ -86,6 +86,12 @@ const styles = StyleSheet.create({
   mediaButton: {
     alignItems: "center",
     justifyContent: "center",
+    width: 35,
+  },
+  sendButton: {
+    backgroundColor: colors.blue,
+    borderRadius: 50,
+    padding: 8,
     width: 35,
   },
 });
