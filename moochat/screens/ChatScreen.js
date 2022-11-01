@@ -22,6 +22,7 @@ const ChatScreen = (props) => {
         source={backgroundImage}
         style={styles.backgroundImage}
       ></ImageBackground>
+
       <View style={styles.inputContainer}>
         <TouchableOpacity
           style={styles.mediaButton}
@@ -29,6 +30,7 @@ const ChatScreen = (props) => {
         >
           <Feather name="plus" size={24} color={colors.blue} />
         </TouchableOpacity>
+
         <TextInput
           style={styles.textBox}
           value={messageText}
@@ -37,12 +39,23 @@ const ChatScreen = (props) => {
           }}
         />
 
-        <TouchableOpacity
-          style={styles.mediaButton}
-          onPress={() => console.log("Pressed")}
-        >
-          <Feather name="camera" size={24} color={colors.blue} />
-        </TouchableOpacity>
+        {messageText === "" && (
+          <TouchableOpacity
+            style={styles.mediaButton}
+            onPress={() => console.log("Pressed")}
+          >
+            <Feather name="camera" size={24} color={colors.blue} />
+          </TouchableOpacity>
+        )}
+
+        {messageText !== "" && (
+          <TouchableOpacity
+            style={styles.mediaButton}
+            onPress={() => console.log("Pressed")}
+          >
+            <Feather name="send" size={24} color={colors.blue} />
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );
