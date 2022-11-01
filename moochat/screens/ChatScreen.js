@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -15,6 +15,10 @@ import colors from "../constants/colors";
 
 const ChatScreen = (props) => {
   const [messageText, setMessageText] = useState();
+
+  const sendMessage = useCallback(() => {
+    setMessageText("");
+  }, [messageText]);
 
   return (
     <SafeAreaView edges={["right", "left", "bottom"]} style={styles.container}>
@@ -51,7 +55,7 @@ const ChatScreen = (props) => {
         {messageText !== "" && (
           <TouchableOpacity
             style={{ ...styles.mediaButton, ...styles.sendButton }}
-            onPress={() => console.log("Pressed")}
+            onPress={sendMessage}
           >
             <Feather name="send" size={20} color="white" />
           </TouchableOpacity>
