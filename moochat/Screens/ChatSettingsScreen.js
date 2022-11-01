@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const ChatListScreen = (props) => {
+const ChatSettingsScreen = (props) => {
   return (
     <View style={styles.container}>
-      <Text>Chat list component</Text>
+      <Text>Chat Settings Screen</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatListScreen;
+export default ChatSettingsScreen;

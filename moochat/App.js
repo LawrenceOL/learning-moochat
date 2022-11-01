@@ -8,7 +8,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //imports from my own files
-import ChatListScreen from "./Components/ChatListScreen.js";
+import ChatListScreen from "./Screens/ChatListScreen.js";
+import ChatSettingsScreen from "./Screens/ChatSettingsScreen.js";
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createStackNavigator();
@@ -57,6 +58,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={ChatListScreen} />
+          <Stack.Screen name="ChatSettings" component={ChatSettingsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
