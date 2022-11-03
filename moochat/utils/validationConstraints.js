@@ -31,3 +31,20 @@ export const validateEmail = (id, value) => {
 
   return validationResult && validationResult[id];
 };
+
+export const validatePassword = (id, value) => {
+  const constraints = {
+    presence: { allowEmpty: false },
+  };
+
+  if (value !== "") {
+    constraints.length = {
+      minimum: 8,
+      message: "must be at least 8 characters",
+    };
+  }
+
+  const validationResult = validate({ [id]: value }, { [id]: constraints });
+
+  return validationResult && validationResult[id];
+};
