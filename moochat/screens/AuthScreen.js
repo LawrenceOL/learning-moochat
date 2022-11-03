@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 
@@ -17,20 +26,28 @@ const AuthScreen = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <PageContainer>
-        <View style={styles.imageContainer}>
-          <Image source={logo} style={styles.image} />
-        </View>
+        <ScrollView>
+          <KeyboardAvoidingView
+            style={styles.KeyboardAvoidingView}
+            behavior={Platform.OS === "ios" ? "height" : undefined}
+            keyboardVerticalOffset={100}
+          >
+            <View style={styles.imageContainer}>
+              <Image source={logo} style={styles.image} />
+            </View>
 
-        {isSignUp ? <SignUpForm /> : <SignInForm />}
+            {isSignUp ? <SignUpForm /> : <SignInForm />}
 
-        <TouchableOpacity
-          onPress={() => setIsSignUp((prevState) => !prevState)}
-          style={styles.linkContainer}
-        >
-          <Text style={styles.link}>{`Switch to ${
-            isSignUp ? "sign in" : "sign up"
-          }`}</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setIsSignUp((prevState) => !prevState)}
+              style={styles.linkContainer}
+            >
+              <Text style={styles.link}>{`Switch to ${
+                isSignUp ? "sign in" : "sign up"
+              }`}</Text>
+            </TouchableOpacity>
+          </KeyboardAvoidingView>
+        </ScrollView>
       </PageContainer>
     </SafeAreaView>
   );
@@ -54,6 +71,10 @@ const styles = StyleSheet.create({
   image: {
     width: "60%",
     resizeMode: "contain",
+  },
+  keyboardAvoidingView: {
+    flex: 1,
+    justifyContent: "center",
   },
 });
 
