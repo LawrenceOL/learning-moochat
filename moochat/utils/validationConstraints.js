@@ -12,13 +12,22 @@ export const validateString = (id, value) => {
       message: "can only contain letters",
     };
 
-    return validate({ [id]: value }, { [id]: constraints });
+    const validationResult = validate({ [id]: value }, { [id]: constraints });
+
+    return validationResult && validationResult[id];
+  }
+};
+
+export const validateEmail = (id, value) => {
+  const constraints = {
+    presence: { allowEmpty: false },
+  };
+
+  if (value !== "") {
+    constraints.email = true;
   }
 
-  // else if (inputId === "email") {
+  const validationResult = validate({ [id]: value }, { [id]: constraints });
 
-  // }
-  // else (inputId === "password") {
-
-  // }
+  return validationResult && validationResult[id];
 };
