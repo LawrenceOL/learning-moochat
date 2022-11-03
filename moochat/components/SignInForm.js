@@ -7,8 +7,20 @@ import SubmitButton from "../components/SubmitButton";
 const SignInForm = () => {
   return (
     <>
-      <Input label="Email" icon="mail" iconPack={Feather} />
-      <Input label="Password" icon="lock" iconPack={Feather} />
+      <Input
+        label="Email"
+        icon="mail"
+        iconPack={Feather}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      <Input
+        label="Password"
+        icon="lock"
+        iconPack={Feather}
+        autoCapitalize="none"
+        secureTextEntry
+      />
 
       <SubmitButton
         title="Sign in"
