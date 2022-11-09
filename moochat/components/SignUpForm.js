@@ -5,7 +5,13 @@ import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
 const SignUpForm = (props) => {
-  const reducer = (state, action) => {};
+  const reducer = (state, action) => {
+    // below can also be written as const { validationResult } = action;
+    const validationResult = action.validationResult;
+    console.log(validationResult);
+
+    return state;
+  };
 
   const initialState = {
     inputValidities: {
@@ -20,7 +26,8 @@ const SignUpForm = (props) => {
   const [formState, dispatchFormState] = useReducer(reducer, initialState);
 
   const inputChangedHandler = (inputId, inputValue) => {
-    console.log(validateInput(inputId, inputValue));
+    const result = validateInput(inputId, inputValue);
+    dispatchFormState({ validationResult: result });
   };
 
   return (
