@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 
 const SignUpForm = (props) => {
+  const reducer = (state, action) => {};
+
+  const initialState = {
+    inputValidities: {
+      firstName: false,
+      lastName: false,
+      email: false,
+      password: false,
+    },
+    formisValid: false,
+  };
+
+  const [formState, dispatchFormState] = useReducer(reducer, initialState);
+
   const inputChangedHandler = (inputId, inputValue) => {
-    console.log(validateInputnput(inputId, inputValue));
+    console.log(validateInput(inputId, inputValue));
   };
 
   return (
@@ -50,6 +64,7 @@ const SignUpForm = (props) => {
         title="Sign up"
         onPress={() => console.log("Sign up button pressed")}
         style={{ marginTop: 20 }}
+        disabled={!formState.formIsValid}
       />
     </>
   );
