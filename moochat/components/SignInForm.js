@@ -6,9 +6,7 @@ import SubmitButton from "../components/SubmitButton";
 import { validateInput } from "../utils/actions/formActions";
 
 const SignInForm = () => {
-  const inputChangedHandler = (inputId, inputValue) => {
-    console.log(validateInput(inputId, inputValue));
-  };
+  const inputChangedHandler = (inputId, inputValue) => {};
 
   return (
     <>

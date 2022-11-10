@@ -3,14 +3,19 @@ import { Feather, FontAwesome } from "@expo/vector-icons";
 
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
+import { validateInput } from "../utils/actions/formActions";
 
 const SignUpForm = (props) => {
   const reducer = (state, action) => {
-    // below can also be written as const { validationResult } = action;
-    const validationResult = action.validationResult;
+    const { validationResult } = action;
+
     console.log(validationResult);
 
-    return state;
+    state.formIsValid = validationResult === undefined;
+    return {
+      ...state,
+      formIsValid: validationResult === undefined,
+    };
   };
 
   const initialState = {

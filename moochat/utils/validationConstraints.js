@@ -11,11 +11,11 @@ export const validateString = (id, value) => {
       flags: "i",
       message: "can only contain letters",
     };
-
-    const validationResult = validate({ [id]: value }, { [id]: constraints });
-
-    return validationResult && validationResult[id];
   }
+
+  const validationResult = validate({ [id]: value }, { [id]: constraints });
+
+  return validationResult && validationResult[id];
 };
 
 export const validateEmail = (id, value) => {
