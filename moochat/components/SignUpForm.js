@@ -5,34 +5,45 @@ import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 import { validateInput } from "../utils/actions/formActions";
 
+const reducer = (state, action) => {
+  const { validationResult, inputId } = action;
+
+  const updatedValidities = {
+    ...state.inputValidities,
+    [inputId]: validationResult,
+  };
+
+  let updatedFormIsValid = true;
+
+  for (const key in updatedValidities) {
+    if (updatedValidities[key] !== undefined) {
+      updatedFormIsValid = false;
+      break;
+    }
+  }
+
+  return {
+    inputValidities: updatedValidities,
+    formIsValid: updatedFormIsValid,
+  };
+};
+
+const initialState = {
+  inputValidities: {
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
+  },
+  formisValid: false,
+};
+
 const SignUpForm = (props) => {
-  const reducer = (state, action) => {
-    const { validationResult } = action;
-
-    console.log(validationResult);
-
-    state.formIsValid = validationResult === undefined;
-    return {
-      ...state,
-      formIsValid: validationResult === undefined,
-    };
-  };
-
-  const initialState = {
-    inputValidities: {
-      firstName: false,
-      lastName: false,
-      email: false,
-      password: false,
-    },
-    formisValid: false,
-  };
-
   const [formState, dispatchFormState] = useReducer(reducer, initialState);
 
   const inputChangedHandler = (inputId, inputValue) => {
     const result = validateInput(inputId, inputValue);
-    dispatchFormState({ validationResult: result });
+    dispatchFormState({ inputId, validationResult: result });
   };
 
   return (
