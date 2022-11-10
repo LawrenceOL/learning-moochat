@@ -5,8 +5,13 @@ import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
 import { validateInput } from "../utils/actions/formActions";
 import { reducer } from "../utils/reducers/formReducer";
+import { signIn } from "../utils/actions/authActions";
 
 const initialState = {
+  inputValues: {
+    email: "",
+    password: "",
+  },
   inputValidities: {
     email: false,
     password: false,
@@ -20,10 +25,14 @@ const SignInForm = () => {
   const inputChangedHandler = useCallback(
     (inputId, inputValue) => {
       const result = validateInput(inputId, inputValue);
-      dispatchFormState({ inputId, validationResult: result });
+      dispatchFormState({ inputId, validationResult: result, inputValue });
     },
     [dispatchFormState]
   );
+
+  const authHandler = () => {
+    signIn(formState.inputValues.email, formState.inputValues.password);
+  };
 
   return (
     <>
@@ -50,7 +59,7 @@ const SignInForm = () => {
 
       <SubmitButton
         title="Sign in"
-        onPress={() => console.log("Sign up button pressed")}
+        onPress={() => authHandler()}
         style={{ marginTop: 20 }}
         disabled={!formState.formIsValid}
       />
