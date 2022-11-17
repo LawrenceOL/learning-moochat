@@ -8,7 +8,7 @@ import {
   FIREBASE_MEASUREMENT_ID,
 } from "@env";
 
-// xxxxxxxxxxxx remove from github xxxxxxxxxx
+// xxxxxxxxxxxx remove from github xxxxxxxxxxx
 
 import { initializeApp } from "firebase/app";
 
