@@ -8,6 +8,8 @@ import {
   FIREBASE_MEASUREMENT_ID,
 } from "@env";
 
+// xxxxxxxxxxxx remove from github xxxxxxxxxx
+
 import { initializeApp } from "firebase/app";
 
 export const getFirebaseApp = () => {
