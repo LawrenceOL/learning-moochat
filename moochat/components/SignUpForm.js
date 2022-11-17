@@ -18,8 +18,6 @@ import {
   FIREBASE_MEASUREMENT_ID,
 } from "@env";
 
-console.log(FIREBASE_API_KEY);
-
 const initialState = {
   inputValues: {
     firstName: "",
