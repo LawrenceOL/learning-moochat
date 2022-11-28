@@ -8,7 +8,7 @@ import { reducer } from "../utils/reducers/formReducer";
 import { signUp } from "../utils/actions/authActions";
 import { ActivityIndicator, Alert } from "react-native";
 import colors from "../constants/colors";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialState = {
   inputValues: {
@@ -28,6 +28,9 @@ const initialState = {
 
 const SignUpForm = (props) => {
   const dispatch = useDispatch();
+  // practice using useSelector to access state
+  const userData = useSelector((state) => state.auth.userData);
+  console.log(userData);
 
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
