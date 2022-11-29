@@ -28,9 +28,6 @@ const initialState = {
 
 const SignUpForm = (props) => {
   const dispatch = useDispatch();
-  // practice using useSelector to access state
-  const userData = useSelector((state) => state.auth.userData);
-  console.log(userData);
 
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
