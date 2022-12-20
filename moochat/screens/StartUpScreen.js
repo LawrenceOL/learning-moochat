@@ -34,7 +34,7 @@ const StartUpScreen = () => {
       dispatch(authenticate({ token: token, userData }));
     };
     tryLogin();
-  }, []);
+  }, [dispatch]);
 
   return (
     <View style={commonStyles.center}>
