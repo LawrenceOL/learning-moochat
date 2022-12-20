@@ -56,7 +56,7 @@ const SignInForm = () => {
       setError(error.message);
       setIsLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, formState]);
 
   return (
     <>

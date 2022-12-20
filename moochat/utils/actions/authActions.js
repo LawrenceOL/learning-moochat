@@ -50,11 +50,7 @@ export const signIn = (email, password) => {
     const auth = getAuth(app);
 
     try {
-      const result = await signInWithEmailAndPasswordithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const result = await signInWithEmailAndPassword(auth, email, password);
       const { uid, stsTokenManager } = result.user;
       const { accessToken, expirationTime } = stsTokenManager;
 

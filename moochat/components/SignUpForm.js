@@ -63,7 +63,7 @@ const SignUpForm = (props) => {
       setError(error.message);
       setIsLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, formState]);
 
   return (
     <>
