@@ -10,16 +10,18 @@ import { ActivityIndicator, Alert } from "react-native";
 import { useDispatch } from "react-redux";
 import colors from "../constants/colors";
 
+const isTestMode = true;
+
 const initialState = {
   inputValues: {
-    email: "",
-    password: "",
+    email: isTestMode ? "hello@lawrenceol.dev" : "",
+    password: isTestMode ? "password" : "",
   },
   inputValidities: {
-    email: false,
-    password: false,
+    email: isTestMode,
+    password: isTestMode,
   },
-  formisValid: false,
+  formIsValid: isTestMode,
 };
 
 const SignInForm = () => {
@@ -69,6 +71,7 @@ const SignInForm = () => {
         keyboardType="email-address"
         autoCapitalize="none"
         onInputChanged={inputChangedHandler}
+        value={formState.inputValues.email}
         errorText={formState.inputValidities["email"]}
       />
       <Input
@@ -79,6 +82,7 @@ const SignInForm = () => {
         autoCapitalize="none"
         secureTextEntry
         onInputChanged={inputChangedHandler}
+        value={formState.inputValues.password}
         errorText={formState.inputValidities["password"]}
       />
 
