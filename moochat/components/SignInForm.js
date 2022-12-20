@@ -6,8 +6,9 @@ import SubmitButton from "../components/SubmitButton";
 import { validateInput } from "../utils/actions/formActions";
 import { reducer } from "../utils/reducers/formReducer";
 import { signIn } from "../utils/actions/authActions";
-import { Alert } from "react-native";
+import { ActivityIndicator, Alert } from "react-native";
 import { useDispatch } from "react-redux";
+import colors from "../constants/colors";
 
 const initialState = {
   inputValues: {
@@ -81,12 +82,20 @@ const SignInForm = () => {
         errorText={formState.inputValidities["password"]}
       />
 
-      <SubmitButton
-        title="Sign in"
-        onPress={() => authHandler()}
-        style={{ marginTop: 20 }}
-        disabled={!formState.formIsValid}
-      />
+      {isLoading ? (
+        <ActivityIndicator
+          size={"small"}
+          color={colors.primary}
+          style={{ marginTop: 10 }}
+        />
+      ) : (
+        <SubmitButton
+          title="Sign In"
+          onPress={authHandler}
+          style={{ marginTop: 20 }}
+          disabled={!formState.formIsValid}
+        />
+      )}
     </>
   );
 };
