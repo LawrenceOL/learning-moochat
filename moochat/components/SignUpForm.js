@@ -47,7 +47,7 @@ const SignUpForm = (props) => {
     }
   }, [error]);
 
-  const authHandler = async () => {
+  const authHandler = useCallback(async () => {
     try {
       setIsLoading(true);
 
@@ -63,7 +63,7 @@ const SignUpForm = (props) => {
       setError(error.message);
       setIsLoading(false);
     }
-  };
+  }, [dispatch]);
 
   return (
     <>
