@@ -4,7 +4,7 @@ import colors from "../constants/colors";
 export default PageTitle = (props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{props.children}</Text>
+      <Text style={styles.text}>{props.text}</Text>
     </View>
   );
 };
