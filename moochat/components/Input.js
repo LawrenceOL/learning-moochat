@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { clickProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 import colors from "../constants/colors";
 
 const Input = (props) => {
+  console.log(props);
+  const [value, setValue] = useState(props.initialValue);
+
   const onChangeText = (text) => {
+    setValue = text;
     props.onInputChanged(props.id, text);
   };
 
@@ -23,6 +28,7 @@ const Input = (props) => {
           style={styles.input}
           onChangeText={onChangeText}
           {...props}
+          value={value}
         />
       </View>
 
