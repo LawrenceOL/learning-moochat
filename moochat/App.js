@@ -11,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted"]);
 // Uncomment below to clear storage if necessary
-// AsyncStorage.clear();
+AsyncStorage.clear();
 
 SplashScreen.preventAutoHideAsync();
 

@@ -4,11 +4,10 @@ import { clickProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 import colors from "../constants/colors";
 
 const Input = (props) => {
-  console.log(props);
   const [value, setValue] = useState(props.initialValue);
 
   const onChangeText = (text) => {
-    setValue = text;
+    setValue(text);
     props.onInputChanged(props.id, text);
   };
 
