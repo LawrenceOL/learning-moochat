@@ -95,7 +95,7 @@ const SettingsScreen = (props) => {
     <PageContainer style={styles.container}>
       <PageTitle text="Settings" />
       <ScrollView>
-        <ProfileImage />
+        <ProfileImage size={80} />
 
         <Input
           id="firstName"
