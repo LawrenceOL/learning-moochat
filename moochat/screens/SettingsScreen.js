@@ -13,6 +13,7 @@ import {
   updateSignedInUserData,
   userLogout,
 } from "../utils/actions/authActions";
+import { updateLoggedInUserData } from "../store/authSlice";
 
 const SettingsScreen = (props) => {
   const dispatch = useDispatch();
@@ -37,6 +38,8 @@ const SettingsScreen = (props) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const [formState, dispatchFormState] = useReducer(reducer, initialState);
 
   const inputChangedHandler = useCallback(
@@ -52,6 +55,13 @@ const SettingsScreen = (props) => {
     try {
       setIsLoading(true);
       await updateSignedInUserData(userData.userId, updatedValues);
+      dispatch(updateLoggedInUserData({ newData: updatedValues }));
+
+      setShowSuccessMessage(true);
+
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
     } catch (error) {
     } finally {
       setIsLoading(false);
@@ -106,20 +116,23 @@ const SettingsScreen = (props) => {
         errorText={formState.inputValidities["about"]}
         initialValue={userData.about}
       />
-      {isLoading ? (
-        <ActivityIndicator
-          size={"small"}
-          color={colors.primary}
-          style={{ marginTop: 10 }}
-        />
-      ) : (
-        <SubmitButton
-          title="Save"
-          onPress={saveHandler}
-          style={{ marginTop: 20 }}
-          disabled={!formState.formIsValid}
-        />
-      )}
+      <View style={{ marginTop: 20 }}>
+        {showSuccessMessage && <Text>Saved!</Text>}
+        {isLoading ? (
+          <ActivityIndicator
+            size={"small"}
+            color={colors.primary}
+            style={{ marginTop: 10 }}
+          />
+        ) : (
+          <SubmitButton
+            title="Save"
+            onPress={saveHandler}
+            style={{ marginTop: 20 }}
+            disabled={!formState.formIsValid}
+          />
+        )}
+      </View>
 
       <SubmitButton
         title="Logout"
