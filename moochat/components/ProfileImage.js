@@ -1,14 +1,14 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
 
 import userImage from "../assets/images/userImage.jpeg";
 import colors from "../constants/colors";
+import { launchImagePicker } from "../utils/imagePickerHelper";
 
 const ProfileImage = (props) => {
   const pickImage = () => {
-    console.log("Launching image picker");
+    launchImagePicker();
   };
 
   return (
