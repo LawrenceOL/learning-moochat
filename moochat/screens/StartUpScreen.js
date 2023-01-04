@@ -15,7 +15,6 @@ const StartUpScreen = () => {
       const storedAuthInfo = await AsyncStorage.getItem("userData");
 
       if (!storedAuthInfo) {
-        console.log("No Storage Found");
         dispatch(setDidTryAutoLogin());
         return;
       }
