@@ -18,6 +18,8 @@ const ProfileImage = (props) => {
 
       // Upload the image
 
+      // Use firebase connection here
+
       setImage({ uri: tempUri });
     } catch (error) {
       console.log(error);
